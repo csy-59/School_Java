@@ -12,5 +12,7 @@ public class CarFuelEfficiency {
         fuels = scan.nextDouble();
         fuelEfficiency = driveDistance/fuels;
         System.out.println("연비: " + fuelEfficiency);
+
+        scan.close();
     }
 }

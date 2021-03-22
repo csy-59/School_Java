@@ -17,5 +17,7 @@ public class ComputeArea {
         //원의 반지름과 면적을 출력한다.
         System.out.println("원의 반지름은 " + radius + "이다.");
         System.out.println("원의 면적은 " + area + "이다.");
+
+        scan.close();
     }
 }
