@@ -1,0 +1,211 @@
+week3(자바의 기본 문법)
+- 객체 지향언어: 클래스 기반 객체 지향 언어로 해야함
+
+- 로컬 변수의 선언과 이용
+    > 프리미티브 타입: byte short int long float double char boolean
+        >> 램의 어떤 주소에 값이 직접 들어가는 변수 타입
+    > String + 그 밖의 타입들***
+        >> 래퍼런스(참조) 타입
+        >> 데이터의 값이 있는 장소를 가리킴
+        >> 위의 프리미티브 타입을 제외하고는 다 래퍼런스 타입임
+
+- 식별자 명명 규칙(구분되는 변수나 함수의 이름)
+    >> 하나 이상의 글자로
+    >> 첫 번째 글자는 문자이거나 '$', '-'여야 함
+    >> 두 번째 이후 글자는 숫자, 문자, '$', '_'여야함
+    >> 위의 특수 문자 말고는 사용 불가
+    >> 길이 제한 없음
+    >> 키워드는 식별자로 사용 불가
+    >> true false null 식별자 사용 불가
+
+    >> 클래스는 대문자로, 함수/변수는 소문자로, 단어 2개면 뒤에 것 대문자로(helloWorld = "hello world")(자바 스타일)
+
+- 변수 사용법
+    class DecExample2 { //클래스 이름 대문자로
+        public static void main(String args[]){
+            int num;
+            System.out.println(num);    // 오류: num 초기화 안되어 있음.
+        }
+    }
+
+    class DecExample3 { //클래스 이름 대문자로
+        public static void main(String args[]){
+            short num1 = 12; (-2^15 ~ +2^15)
+            System.out.println(num1);
+            dobule num2 =12.75;
+            System.out.println(num2);
+            char ch = 'A'; // 내부적으로는 정수형이지만, 출력은 숫자로
+            System.out.println(ch);
+        }
+    }
+
+- 로컬 변수 사용 범위
+    class DecExample4 { //클래스 이름 대문자로
+        public static void main(String args[]){
+            {
+                int num = 10; //이 블록 안에서만 선언됨
+            }
+            System.out.println(num) //오류: num이 없음
+        }
+    }
+
+- final 변수: 값을 딱 한번만 대입 가능
+    class FinalExample1 {
+        public static void main(String args[]){
+            final double pi;
+            pi = 3.14;  //final 변수 초기화, 이후 다른 값 대입 못함.
+            dobule  radius = 2.0, circum;
+            circum = 2 * pi * radius;
+            System.out.println(circum);
+        }
+    }
+
+- 단순 대입문
+    > 변수 = 식;    //변수의 이름에 변수에 대입할 값을 계산하는 식의 결과를 넣음
+    > 예) num = 1; num2 = 2 + 3;(5) 등
+    > + - * / %(나머지)
+
+- 여러가지 대입문
+    > 복합 대입 연산자: += -= *= /= %=
+    > 증감 연산자: ++ -- (후위: (변수)++ or (변수)-- 먼저 사용하고 증감)
+
++ 자바 데이터/입출력
+- 데이터 변환
+    > 정보를 잃어버릴 수 있기 때문에 조심스럽게 다뤄야함
+    > 세 가지 방법
+        >> 강제 변환: 가장 강력하나 위험한 방법
+            average = (float) total/count; // 정수형 total을 실수형으로 변환
+            >> 확장 변환과 축소 변환 모두 가능
+
+- 문자열 상수
+(연산자 중복: 연산자를 재설정 정한 것(ex. 2+1==3, "Hi" + "there"=="Hithere)
+    > String 클래스의 한 객체
+    > 쌍 따옴표 안의 문자들의 나열
+    > + 연산자가 두 개의 문자열 상수들을 결함하기 위해 사용됨.
+    > 문자열상수와 숫자를 결합하기 위해 사용될 수 있다.
+
+- 출력문 사용
+    > System.out.println(<내용>);
+    > System.out.println(); //빈 줄 출력
+    > 문자열 결합
+        >> + 연산자의 피연산자들이 문자열과 숫자인 경우 숫자가 문자열로 바뀐 후 결합된다.
+            (System.out.println("나의 나이: " + 20); >> 출력: 나의 나이: 20)
+        >> 다음 출력문들의 출력 결과는?
+            System.out.println("3과 4를 결합: " + 3 +4);    >> 출력: 3과 4를 결합: 34;
+            Systme.out.println("3과 4를 더함: " + (3+4));   >> 출력: 3과 4를 더함: 7;
+                >> (3+4)를 한 후 문자열로 변환 함
+
+- 입력문 사용하기
+    > Scanner 클래스가 여러 데이터 유형들의 입력 값들을 읽기 위한 편리한 메소드들을 제공한다.
+    > Scanner 객체가 여러 입력 장치들로부터 입력 값들을 읽어 드리기 위해서 만들어 질 수 있다. 이 값들은 사용자가 키보드를 통해 입력하는 값들을 포함한다.
+    > 키보드 입력은 System.in 객체에 의해 나타내진다.
+    > Scanner scan = new Scanner(System.in);
+        >> new 연산자가 Scanner 객체를 생성(new => 객체 생성 키워드)
+        >> System.in 대신에 문자열이 들어오면 그 파일을 읽어옴
+    > answer = scan.nextLine(); //현재 줄에 남아있는 모든 입력을 한 문자열로 읽기 
+        >> 이외에도 nextInt nextDouble 등도 있음.
+    > Scanner 클래스는 java.util 클래스에 있음
+
+- 입력 토큰들
+    > 백색 공간으로 토큰(입력)을 분리 해 사용
+    > 백색 공간은 빈칸(space) 탭(tap) 새줄 문자(아마도... \n?) 포함
+
+- 조건문
+    > if 조건문
+        > if(조건식)
+            명령문
+        > if(조건식){
+            블록
+        }
+        > 조건식이 참이면 명령문/블록 실행
+
+        > if(조건식){
+        }
+          else{
+        }
+        >> 들여쓰기!! 중요!!
+
+        > 다중 if문
+        >> if() { if() {} }
+        
+        > dangling else: 어느 if 키워드와 짝을 이루는지 모호한 else 키워드
+        if(num1>num2)
+            if(num1>num3)
+                num = num1;
+          else
+            num = num3;
+        >> 구간을 잘 나눠야함
+
+    > switch 조건문
+        switch(식) {
+            case 값1: (명령문) break;
+            case 값2: (명령문) break;           //break문이 없으면 밑에 있는 명령문도 실행함.
+            case 값3: (명령문) break;
+            default: (명령문) break;            //모든 case 중 일치하는 것이 없다면 실행
+        }
+
+- 반복문
+    > while 반복문
+        while (조건식){
+            명령문
+        }
+        whlie (true){   //무한 루프 ctrl + c로 나올 수 있음
+            명령문
+        }
+    > do-while: 한번 실행 보장
+        do{
+            명령문
+        } while (조건식);        //꼭 마지막에 ;!!
+    > for
+        for(초기화식;조건식;업데이트식){
+            실행부분
+        }
+        for(;;){        //무한 루프 ctrl = c로 나올 수 있음
+            명령문
+        }
+
+        > 향상된 for문 형식
+        for(변수타입 변수이름 : 배열이름)
+        >> for(int num : arr){
+            System.out.println(num);    //arr 배열 값을 차례로 num에 대입, 출력
+        }
+    > break: 만나면 해당 반복문을 빠져나감
+        > 중첩된 반복문을 나가고 싶으면 라벨 사용
+        Loop:
+            for(int i = 0;i<10;i++){
+                 for(int j= 0;j<10;j++){
+                    break Loop;         //루프를 빠져나감
+             }
+            }
+    > continue: 만나면 반복문의 다음 차례로 넘어감(continue 뒷쪽의 명령문 실행 x)
+        while(cnt<10){
+            if(cnt == 5) continue;      //밑의 cnt++이 실행이 되지 않아 무한 루프가 나옴
+            System.out.println(cnt);
+            cnt++;
+        }
+        > 위의 라벨 사용도 break처럼 사용가능(but 추천 X)
+
+- 메소드 호출문
+    > 여러 개의 메소드가 포함된 크래스
+    class Luxury{           // 클래스
+        public static void main(String args[]){             // 메소드 하나
+            printCharacter('*', 30);
+            System.out.println("hi");
+            printCharacter('*', 30);    //메소드 호출문, printCharacter메소드 출력
+        }
+
+        static void(반환형태: void-안줌) printCharacter(char ch, int num ){       // 메소드 둘/호출 되는 메소드
+            for(int i = 0;i<num;i++){
+                System.out.print(ch);
+            }
+            System.out.println();
+        }
+    }
+    > main만 자동으로 실행, 이외는 자동 실행X
+    > 파라미터
+        > printCharacter(char ch, int num)      // 파라미터: 어떤 파라미터를 받아올 지 생각해봐야 함, 타입과 순서가 다르면 오류가 남
+        > 파라미터는 없을 수도, 하나 이상 사용할 수도 있음  
+        > c와 다른점: 무조건 참조에 의한 반환함.
+    > 리턴 값
+        > 변수 = 함수명(파라미터); 
+        > 변수와 함수의 리터값의 자료형이 같아야함. + 함수에는 return 있어야함.
