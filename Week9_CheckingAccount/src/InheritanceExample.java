@@ -53,7 +53,7 @@ public class InheritanceExample {
 				
 			} 
 			catch(Exception e) {
-				System.err.println("!입력 오류!\n재입력을 시작합니다.\n" + e.toString());
+				System.err.println("!입력 오류!\n재입력을 시작합니다.\n" + e.getMessage());
 				scan = new Scanner(System.in); //scanner 버퍼 오류 방지
 			} 
 		}
@@ -88,7 +88,7 @@ public class InheritanceExample {
 				
 			} 
 			catch(Exception e) {
-				System.err.println("!메뉴 오류!\n잘못누르셨습니다. 메뉴로 돌아갑니다.\n" + e.toString());
+				System.err.println("!메뉴 오류!\n잘못누르셨습니다. 메뉴로 돌아갑니다.\n" + e.getMessage());
 				scan = new Scanner(System.in);
 			}
 		}
@@ -114,7 +114,7 @@ public class InheritanceExample {
 			System.out.println("저금 완료");
 		} 
 		catch(Exception e) {
-			System.err.println("!저금 오류!\n메뉴로 돌아갑니다.\n" + e.toString() + "\n");
+			System.err.println("!저금 오류!\n메뉴로 돌아갑니다.\n" + e.getMessage() + "\n");
 		}
 		
 		return;
@@ -129,7 +129,7 @@ public class InheritanceExample {
 			System.out.println("인출 완료: " + result + "원 인출");
 		} 
 		catch(Exception e) {
-			System.err.println("!인출 오류!\n메뉴로 돌아갑니다.\n" + e.toString() + "\n");
+			System.err.println("!인출 오류!\n메뉴로 돌아갑니다.\n" + e.getMessage() + "\n");
 		}
 		
 		return;
@@ -150,7 +150,7 @@ public class InheritanceExample {
 			
 			System.out.println("카드 지불 완료: " + result + "원 지불");
 		} catch(Exception e) {
-			System.err.println("!카드 지불 오류!\n메뉴로 돌아갑니다.\n" + e.toString() + "\n");
+			System.err.println("!카드 지불 오류!\n메뉴로 돌아갑니다.\n" + e.getMessage() + "\n");
 		}
 		
 		return;
